@@ -1,0 +1,15 @@
+{
+  "name": "kud",
+  "version": "0.0.1",
+  "description": "첫시작",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.18.0"
+  }
+}
