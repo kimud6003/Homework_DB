@@ -1,27 +1,24 @@
+// +
 export default class PubSub{
     constructor(){
-        this.evnets={};
+        // 클래스 생성과 동시에 Events 객체 생성
+        this.events={};
     }
-
-    subscribe(event, callback) {
-        let self = this;
-    
-        if(!self.evnets.hasOwnProperty(event)){
-            self.events[event] = [];
+    // 쉽게 생각하면 {"추가":원하는 메소드} 같은 형식으로 함수의 이름과 함수를 넣어주는 메소드 
+    subscribe(event,callback){
+        let events = this.events;
+        if(!events.hasOwnProperty(event)){
+            events[event]=[];
         }
-    
-        return self.events[evnet].push(callback);
+        return events[event].push(callback);
     }
-
-    publish(event, data = {}){
-        let self = this;
-
-        if(!self.events.hasOwnProperty(event)){
-            return [];
+    // subscribe에서 추가한 메소드를 가져와서 실행 시키는 항목 
+    publish(event,data={}){
+        let events = this.events;
+        if(!events.hasOwnProperty(event)){
+            return[]
         }
-        return self.events[event].map(callback=>callback(data))
+        return events[event].map(callback=>callback(data));
     }
+
 }
-
-
-
