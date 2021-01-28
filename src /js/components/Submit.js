@@ -17,14 +17,18 @@ export default class List extends Component {
             evt.preventDefault();
             let contentValue = self.contentElement.value.trim(); 
             let authorValue = self.authorElement.value.trim();
-
-            if(contentValue.length){
-                store.dispatch('addItem',contentValue);
+            if(contentValue.length*authorValue.length!=0){
+            let tmp = {};
+                tmp.author = authorValue;
+                tmp.content = contentValue;
+                tmp.date = Date();
+                store.dispatch('addItem',tmp);
+                
                 self.contentElement.value="";
+                self.authorElement.value="";
                 self.contentElement.focus();
+            console.log(tmp);
             }
-            console.log(contentValue);
-            console.log(authorElement.value.trim());
         })
     }
 }

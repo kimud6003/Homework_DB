@@ -5,7 +5,7 @@ export default class List extends Component {
     constructor() {
         super({
             store,
-            element: document.querySelector('.items')
+            element: document.querySelector('.test')
         });
     }
     render() {
@@ -15,15 +15,21 @@ export default class List extends Component {
             self.element.innerHTML = `<p class="no-items">메모 내역이 없습니다</p>`;
             return;
         }
+        store.state.items.map(i =>{
+            console.log(i);
+        })
         
         self.element.innerHTML = `
-            <ul class="app__items">
-                ${store.state.items.map(item => {
-                    return `
-                        <li>${item}<button aria-label="Delete this item">×</button></li>
-                    `
-                }).join('')}
-            </ul>
+            ${store.state.items.map(item => {
+                return `
+                    <tr>
+                    <td>${item.content} </td>
+                    <td>${item.author} </td>
+                    <td>${item.date} </td>
+                    <td><button aria-label="Delete this item">×</button></td>
+                    <tr>
+                `
+            }).join('')}
         `;
         
         self.element.querySelectorAll('button').forEach((button, index) => {
